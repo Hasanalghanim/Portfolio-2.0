@@ -1,0 +1,247 @@
+{% extends 'projects/base.html'%} {% load static %} {% block content %}
+
+
+<!-- First row --->
+<div class="main-bg section scrollspy" id="main">
+  <div class="container">
+
+    <!-- Main Row -->
+
+    {{ sent}}
+
+    {{ error }}
+
+    <div class="row">
+      <div class="col s12 m4 l6">
+      <h4>Hi, My name is ...</h4>
+      <h2>Hasan Alghanim.</h2>
+      <h6>I'm a software Developer based in Edmonton, <br>
+        Alberta specializing in building exceptional <br>
+        websites, applications, and everything in between.
+      </h6>
+
+      <div class="center-align get-in-touch">
+        <a href="#contact" class="waves-effect waves-light btn">Get in touch </a>
+      </div>
+      </div>
+
+
+
+      <div class="col s12 m8 l6">
+        <img src="{% static 'coffee.png' %}" alt="" class="coffee-drinker responsive-img">
+
+
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+
+    <!-- End Main Row -->
+
+
+
+    <!--  2nd Row  -->
+    <div class="container bg-2 section scrollspy" id='about-me'>
+      <div class="row">
+        <div style="" class="col s12 l12">
+          <div class="valign-wrapper">
+            <h3 class="col s12 l4">About me</h3>
+            <hr class="col s12 l8">
+          </div>
+
+      </div>
+    </div>
+
+
+
+      <div class="row">
+        <div class="col s12 m10 l10">
+          <h5> Hello! I'm Hasan, a software Developer based in Edmonton Alberta.</h5>
+
+
+            <h6>I enjoy creating things that live on the internet, whether that be
+            websites, applications, or anything in between. My goal is to always
+            build products that provide pixel-perfect, performant experiences.</h6>
+            <h6>Here are a few technologies I've been working with recently:</h6>
+
+            <table class="striped">
+              <thead>
+                <tr>
+                    <th>Front-End</th>
+                    <th>Back-End</th>
+                    <th>Other</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Python</td>
+                  <td>HTML + CSS</td>
+                  <td>Photoshop</td>
+                </tr>
+                <tr>
+                  <td>Django </td>
+                  <td>Bootstrap</td>
+                  <td>Adobe XD</td>
+                </tr>
+                <tr>
+                  <td>Django-Rest</td>
+                  <td>Materialize</td>
+                  <td>GIt/Gitbub</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    <!-- End Main Row -->
+
+<!-- Projects section -->
+
+
+<div class="container bg-2 section">
+  <div class="row">
+    <div style="" class="col s12 l12">
+      <div class="valign-wrapper">
+        <h3 class="col s12 l4">Projects</h3>
+        <hr class="col s12 l8">
+      </div>
+
+  </div>
+</div>
+
+
+
+
+
+  <div class="scrollspy" id='projects'">
+
+      {% for project in project %}
+          <div class="row">
+            <div class="center-align">
+              <div class="col s12 m5 l6">
+                  <img class="responsive-img" src="{{ project.image.url }}" alt="">
+              </div>
+
+            </div>
+
+
+            <div class="left-align">
+              <div class="col s12 m7 l6">
+                <h5>{{ project.Project_Title }}</h5>
+                {% if project.stack %}
+                <small> Stack Used: {{ project.stack }} </small>
+                {% endif %}
+
+                <p class="">{{ project.Project_info|truncatewords:50 }}</p>
+                {% if project.Project_URL %}
+                  <a href="{{ project.Project_URL}}" class="">{{ project.Project_Title }}</a>
+                  {% endif %}
+              </div>
+
+            </div>
+
+          </div>
+          {% endfor %}
+        </div>
+
+  </div>
+
+
+
+
+
+
+
+<!-- End Projects -->
+
+<div class="container bg-2 section">
+  <div class="row">
+    <div class="col s12 l12">
+      <div class="valign-wrapper">
+        <h3 class="col s12 l4">Now what?</h3>
+        <hr class="col s9 l8">
+      </div>
+
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col s12 l12 center-align">
+    <h4>Get in Touch</h4>
+    </div>
+
+
+
+      <div class="col s12 l12 center-align">
+        <h6 class=''>I'm always looking for new opportunities
+          to learn and grow.<br>
+           If you think I can make
+          your life easier or you just want to say hi.<br>
+          My Email is always open.
+        </h6>
+        <h6> Hasanalghanim@gmail.com</h6>
+        <!-- <div class="center-align get-in-touch">
+          <a href="{{'contact' }}"class="waves-effect waves-light btn"> Email me </a>
+        </div> -->
+      </div>
+
+    </div>
+</div>
+
+
+
+
+
+<div class="container">
+
+
+
+  <div class="center-align scrollspy" id='contact'>
+    <h4>Send me an Email, Lets work!</h4>
+  </div>
+
+<div class="row ">
+  <div class="col s12 l6">
+    <img src="{% static 'emailer.png' %}" alt="" class=" responsive-img">
+  </div>
+
+  <form class="col s12 m8 l6 contact-form" method='POST' action = "{% url 'home' %}" >
+    {% csrf_token %}
+        <div class="row" >
+          <div class="input-field col s6">
+            <input  id="name" type="text" class="validate" name="sender-name">
+            <label for="name">Full Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="from-email" type="text" class="validate" name="from-email">
+            <label for="from-email">Email</label>
+          </div>
+          <div class="input-field col s12">
+            <textarea id="from-message" class="materialize-textarea" name="from-message"></textarea>
+            <label for="from-message">Message</label>
+          </div>
+          <div class='center-align'>
+            <button type="submit" class="waves-effect waves-light btn">Submit</button>
+          </div>
+
+
+
+        </div>
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

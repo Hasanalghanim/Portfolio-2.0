@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'materialize/css/materialize.min.css' %}"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+    <title>Hasan!</title>
+  </head>
+
+  <body>
+    <div class="navbar-fixed">
+      <nav class="costom-nav">
+        <div class="nav-wrapper container">
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <a style="color:black;" href="#main" class="brand-logo ">Home</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+            <li><a href="#about-me">About me</a></li>
+            <li><a href="#projects">Projects </a></li>
+            <li><a href="#contact">Contact </a></li>
+          </ul>
+        </div>
+      </nav>
+  </div>
+
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="#about-me">About me</a></li>
+    <li><a href="#projects">Projects </a></li>
+    <li><a href="#contact">Contact </a></li>
+  </ul>
+
+
+
+
+    <div class="scrolling-box">{% block content %} {% endblock content %}</div>
+
+
+
+
+
+
+  <footer>
+    <div class="bigfoot">
+      <div class="center-align">
+        <p> Copyright &copy; Hasan Al Ghanim  2021 </p>
+      </div>
+
+
+    </div>
+
+
+  </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.scrollspy');
+    var instances = M.ScrollSpy.init(elems,);
+  });
+  </script>
+
+
+
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems,);
+    });
+  </script>
+  </body>
+</html>
