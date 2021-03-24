@@ -217,23 +217,24 @@
     <img src="{% static 'emailer.png' %}" alt="" class=" responsive-img">
   </div>
 
-  <form class="col s12 m8 l6 contact-form" method='POST' action = "{% url 'home' %}" >
+  <form class="col s12 m8 l6 contact-form" method='POST' id="contact_form" action = "{% url 'sendemail' %}" >
     {% csrf_token %}
         <div class="row" >
           <div class="input-field col s6">
-            <input  id="name" type="text" class="validate" name="sender-name">
-            <label for="name">Full Name</label>
+            <input  id="senderName" type="text" class="validate" name="senderName">
+            <label for="senderName">Full Name</label>
           </div>
           <div class="input-field col s6">
-            <input id="from-email" type="text" class="validate" name="from-email">
-            <label for="from-email">Email</label>
+            <input id="email" type="text" class="validate" name="email">
+            <label for="fromEmail">Email</label>
           </div>
           <div class="input-field col s12">
-            <textarea id="from-message" class="materialize-textarea" name="from-message"></textarea>
-            <label for="from-message">Message</label>
+            <textarea id="fromMessage" class="materialize-textarea" name="fromMessage"></textarea>
+            <label for="fromMessage">Message</label>
           </div>
           <div class='center-align'>
             <button type="submit" class="waves-effect waves-light btn">Submit</button>
+            <p id="emailsent" style="display:none">Thank you, Your email was sent.</p>
           </div>
 
 

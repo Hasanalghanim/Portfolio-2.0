@@ -12,6 +12,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import environ
+
+
+
+env = environ.Env()
+
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,8 +29,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-
-SECRET_KEY = "=tgsip6j@-3=q11z+ljlkris4t3_d4@wef+&45)vo_4=#g05v#"
+SECRET_KEY = env("SECRET_KEY")
+# SECRET_KEY = "=tgsip6j@-3=q11z+ljlkris4t3_d4@wef+&45)vo_4=#g05v#"
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -109,8 +116,8 @@ EMAIL_HOST =  'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'alghanimhasan2@gmail.com'
-EMAIL_HOST_PASSWORD = 'Nadiasimmer1'
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 
 
 

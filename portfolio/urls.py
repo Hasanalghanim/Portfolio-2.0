@@ -23,6 +23,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
+    path('sendemail/', views.sendemail, name="sendemail")
     # path('contact/', views.contact, name='contact')
 
 
